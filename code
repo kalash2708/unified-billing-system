@@ -1,0 +1,426 @@
+#include &lt;stdlib.h&gt; //Header Files
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;wctype.h&gt;
+void billingsystem(); //Function Prototype
+struct bill //Structure to store the details of the bill
+{
+char customername[50];
+char commodity[30];
+long phoneno;
+long customerid;
+int consumed;
+int bill;
+};
+
+int main()
+{
+int seccode; //int variable to store the security code
+char username[100]; //string to store the name of the user(employee)
+int arrSec[10]={9982,7407,4200,9211,6703,8892,6060,2321,6969,1140}; //array which has all
+security codes of employees stored indexwise, this array cross checks if the security code entered
+matches with the employee name
+printf(&quot;------------------------------------------------------\n&quot;);
+printf(&quot;------ Welcome to the Unified Billing Interface ------\n&quot;);
+printf(&quot;------------------------------------------------------\n&quot;);
+printf(&quot;Please enter your first name\n&quot;);
+scanf(&quot;%s&quot;,username);
+printf(&quot;Please enter your security code\n&quot;);
+scanf(&quot;%d&quot;,&amp;seccode);
+
+//security check
+if((strcmp(username,&quot;Shantha&quot;)==0) || (strcmp(username,&quot;shantha&quot;))==0)
+{
+if(seccode==arrSec[0])
+{ //If the security check passes, this output is generated, and control goes to the billing function
+printf(&quot;***** Welcome Shantha Ma&#39;am *****\n&quot;);
+billingsystem(); //Billing function is being called
+}
+else //if incorrect username or security code is entered, access is not granted
+printf(&quot;Incorrect username/security code entered\n&quot;);
+}
+else if((strcmp(username,&quot;Vishnu&quot;)==0) || (strcmp(username,&quot;vishnu&quot;))==0)
+{
+if(seccode==arrSec[1])
+{
+printf(&quot;***** Welcome Vishnu *****\n&quot;);
+billingsystem();
+}
+else
+printf(&quot;Incorrect username/security code entered\n&quot;);
+}
+else if((strcmp(username,&quot;Shrenik&quot;)==0) || (strcmp(username,&quot;shrenik&quot;))==0)
+{
+if(seccode==arrSec[2])
+{
+printf(&quot;***** Welcome Shrenik *****\n&quot;);
+billingsystem();
+}
+else
+printf(&quot;Incorrect username/security code entered\n&quot;);
+}
+
+else if((strcmp(username,&quot;Dhawal&quot;)==0) || (strcmp(username,&quot;dhawal&quot;))==0)
+{
+if(seccode==arrSec[3])
+{
+printf(&quot;***** Welcome Dhawal *****\n&quot;);
+billingsystem();
+}
+else
+printf(&quot;Incorrect username/security code entered\n&quot;);
+}
+else if((strcmp(username,&quot;Sharon&quot;)==0) || (strcmp(username,&quot;sharon&quot;))==0)
+{
+if(seccode==arrSec[4])
+{
+printf(&quot;***** Welcome Sharon *****\n&quot;);
+billingsystem();
+}
+else
+printf(&quot;Incorrect username/security code entered\n&quot;);
+}
+else if((strcmp(username,&quot;Shaheer&quot;)==0) || (strcmp(username,&quot;shaheer&quot;))==0)
+{
+if(seccode==arrSec[5])
+{
+printf(&quot;***** Welcome Shaheer *****\n&quot;);
+billingsystem();
+}
+else
+printf(&quot;Incorrect username/security code entered\n&quot;);
+}
+else if((strcmp(username,&quot;Aditi&quot;)==0) || (strcmp(username,&quot;aditi&quot;))==0)
+
+{
+if(seccode==arrSec[6])
+{
+printf(&quot;***** Welcome Aditi *****\n&quot;);
+billingsystem();
+}
+else
+printf(&quot;Incorrect username/security code entered\n&quot;);
+}
+else if((strcmp(username,&quot;Anushka&quot;)==0) || (strcmp(username,&quot;anushka&quot;))==0)
+{
+if(seccode==arrSec[7])
+{
+printf(&quot;***** Welcome Anushka *****\n&quot;);
+billingsystem();
+}
+else
+printf(&quot;Incorrect username/security code entered\n&quot;);
+}
+else if((strcmp(username,&quot;Pranay&quot;)==0) || (strcmp(username,&quot;pranay&quot;))==0)
+{
+if(seccode==arrSec[8])
+{
+printf(&quot;***** Welcome Pranay *****\n&quot;);
+billingsystem();
+}
+else
+printf(&quot;Incorrect username/security code entered\n&quot;);
+}
+else if((strcmp(username,&quot;Benisha&quot;)==0) || (strcmp(username,&quot;benisha&quot;))==0)
+{
+
+if(seccode==arrSec[9])
+{
+printf(&quot;***** Welcome Benisha *****\n&quot;);
+billingsystem();
+}
+else
+printf(&quot;Incorrect username/security code entered\n&quot;);
+}
+else
+printf(&quot;Incorrect username/security code entered\n&quot;);
+
+return 0;
+}
+
+void billingsystem()
+{
+int cnt,temp,amt; //cnt variable stores the bill details in the structure index wise, temp and amt
+are used to check and compute the final bill amount
+int electric,internet,talk,gas,water; //special int variables used when combined bill has to be
+generated
+struct bill cn[100],com[100],pn[100],cid[100],cnsmd[100],billval[100];
+int temp1,temp2,temp3,temp4,temp5; //special int variables used when combined bill has to be
+generated
+
+char a;
+do{
+int choice1;
+printf(&quot;1. Generate Electricity Bill\n2. Generate Internet Bill\n3. Generate Telecomm Bill\n4.
+Generate Gas Bill\n5. Generate Water Bill\n6. Generate a Combined Services Bill\n7. Exit
+Program\n&quot;);
+scanf(&quot;%d&quot;,&amp;choice1); //Storing the user’s bill choice
+
+switch(choice1) //switch case to calculate bill
+
+{
+case 1:
+printf(&quot;Enter the customer&#39;s name\n&quot;);
+scanf(&quot;%s&quot;,cn[cnt].customername);
+printf(&quot;Enter the phone number\n&quot;);
+scanf(&quot;%ld&quot;,&amp;pn[cnt].phoneno);
+printf(&quot;Enter the customer ID\n&quot;);
+scanf(&quot;%ld&quot;,&amp;cid[cnt].customerid);
+printf(&quot;Enter the units of electricity consumed\n&quot;);
+scanf(&quot;%d&quot;,&amp;cnsmd[cnt].consumed);
+temp=cnsmd[cnt].consumed; //calculating the bill
+if(temp&gt;0 &amp;&amp; temp&lt;100)
+amt=temp*0.50;
+else if(temp&gt;100 &amp;&amp; temp&lt;200)
+amt=(100*0.50)+((temp-100)*0.40);
+else if(temp&gt;200 &amp;&amp; temp&lt;300)
+amt=(100*0.50)+(100*0.40)+((temp-200)*0.30);
+else if(temp&gt;300 &amp;&amp; temp&lt;400)
+amt=(100*0.50)+(100*0.40)+(100*0.30)+((temp-300)*0.20);
+else
+amt=(100*0.50)+(100*0.40)+(100*0.30)+(100*0.20)+((temp-400)*0.20);
+billval[cnt].bill=amt;
+printf(&quot;\n \n&quot;); //printing the bill
+printf(&quot;$$$$$ %s&#39;s Electricity Bill $$$$$\n&quot;,cn[cnt].customername);
+printf(&quot;Name: %s\n&quot;,cn[cnt].customername);
+printf(&quot;Phone Number: %ld\n&quot;,pn[cnt].phoneno);
+printf(&quot;Customer ID: %ld\n&quot;,cid[cnt].customerid);
+printf(&quot;Units Consumed: %d kW\n&quot;,cnsmd[cnt].consumed);
+printf(&quot;Final Bill Amount: Rs.%d\n&quot;,amt);
+printf(&quot;Bill due on 14th February 2022\n&quot;);
+printf(&quot;\n \n&quot;);
+
+cnt++;
+break;
+
+case 2:
+printf(&quot;Enter the customer&#39;s name\n&quot;);
+scanf(&quot;%s&quot;,cn[cnt].customername);
+printf(&quot;Enter the phone number\n&quot;);
+scanf(&quot;%ld&quot;,&amp;pn[cnt].phoneno);
+printf(&quot;Enter the customer ID\n&quot;);
+scanf(&quot;%ld&quot;,&amp;cid[cnt].customerid);
+printf(&quot;Enter the amount of data consumed in gigabytes\n&quot;);
+scanf(&quot;%d&quot;,&amp;cnsmd[cnt].consumed);
+temp=cnsmd[cnt].consumed;
+if(temp&gt;0 &amp;&amp; temp&lt;100)
+amt=temp*10;
+else if(temp&gt;100 &amp;&amp; temp&lt;200)
+amt=(100*10)+((temp-100)*8);
+else if(temp&gt;200 &amp;&amp; temp&lt;300)
+amt=(100*10)+(100*8)+((temp-200)*6);
+else if(temp&gt;300 &amp;&amp; temp&lt;400)
+amt=(100*10)+(100*8)+(100*6)+((temp-300)*5);
+else
+amt=(100*10)+(100*8)+(100*6)+(100*5)+((temp-400)*4.5);
+billval[cnt].bill=amt;
+printf(&quot;\n \n&quot;);
+printf(&quot;$$$$$ %s&#39;s Internet Bill $$$$$\n&quot;,cn[cnt].customername);
+printf(&quot;Name: %s\n&quot;,cn[cnt].customername);
+printf(&quot;Phone Number: %ld\n&quot;,pn[cnt].phoneno);
+printf(&quot;Customer ID: %ld\n&quot;,cid[cnt].customerid);
+printf(&quot;Data Consumed: %d GB\n&quot;,cnsmd[cnt].consumed);
+printf(&quot;Final Bill Amount: Rs.%d\n&quot;,amt);
+
+printf(&quot;Bill due on 14th February 2022\n&quot;);
+printf(&quot;\n \n&quot;);
+cnt++;
+
+break;
+
+case 3:
+printf(&quot;Enter the customer&#39;s name\n&quot;);
+scanf(&quot;%s&quot;,cn[cnt].customername);
+printf(&quot;Enter the phone number\n&quot;);
+scanf(&quot;%ld&quot;,&amp;pn[cnt].phoneno);
+printf(&quot;Enter the customer ID\n&quot;);
+scanf(&quot;%ld&quot;,&amp;cid[cnt].customerid);
+printf(&quot;Enter the total talktime(in minutes)\n&quot;);
+scanf(&quot;%d&quot;,&amp;cnsmd[cnt].consumed);
+temp=cnsmd[cnt].consumed;
+if(temp&gt;0 &amp;&amp; temp&lt;=500)
+amt=temp*1;
+else if(temp&gt;500 &amp;&amp; temp&lt;=1000)
+amt=(500*1)+((temp-500)*0.8);
+else
+amt=(500*1)+(500*0.8)+((temp-1000)*0.6);
+billval[cnt].bill=amt;
+printf(&quot;\n \n&quot;);
+printf(&quot;$$$$$ %s&#39;s Telecomm Bill $$$$$\n&quot;,cn[cnt].customername);
+printf(&quot;Name: %s\n&quot;,cn[cnt].customername);
+printf(&quot;Phone Number: %ld\n&quot;,pn[cnt].phoneno);
+printf(&quot;Customer ID: %ld\n&quot;,cid[cnt].customerid);
+printf(&quot;Talktime: %d Minutes\n&quot;,cnsmd[cnt].consumed);
+printf(&quot;Final Bill Amount: Rs.%d\n&quot;,amt);
+printf(&quot;Bill due on 14th February 2022\n&quot;);
+
+printf(&quot;\n \n&quot;);
+cnt++;
+
+break;
+
+case 4:
+printf(&quot;Enter the customer&#39;s name\n&quot;);
+scanf(&quot;%s&quot;,cn[cnt].customername);
+printf(&quot;Enter the phone number\n&quot;);
+scanf(&quot;%ld&quot;,&amp;pn[cnt].phoneno);
+printf(&quot;Enter the customer ID\n&quot;);
+scanf(&quot;%ld&quot;,&amp;cid[cnt].customerid);
+printf(&quot;Enter the volume of gas utilised(in cubic metres)\n&quot;);
+scanf(&quot;%d&quot;,&amp;cnsmd[cnt].consumed);
+temp=cnsmd[cnt].consumed;
+if(temp&gt;0 &amp;&amp; temp&lt;=5)
+amt=temp*25;
+else if(temp&gt;5 &amp;&amp; temp&lt;=10)
+amt=(5*25)+((temp-5)*50);
+else
+amt=(5*25)+(5*50)+((temp-10)*75);
+billval[cnt].bill=amt;
+printf(&quot;\n \n&quot;);
+printf(&quot;$$$$$ %s&#39;s Gas Bill $$$$$\n&quot;,cn[cnt].customername);
+printf(&quot;Name: %s\n&quot;,cn[cnt].customername);
+printf(&quot;Phone Number: %ld\n&quot;,pn[cnt].phoneno);
+printf(&quot;Customer ID: %ld\n&quot;,cid[cnt].customerid);
+printf(&quot;Volume consumed: %d Cubic Metres\n&quot;,cnsmd[cnt].consumed);
+printf(&quot;Final Bill Amount: Rs.%d\n&quot;,amt);
+printf(&quot;Bill due on 14th February 2022\n&quot;);
+printf(&quot;\n \n&quot;);
+
+cnt++;
+
+break;
+
+case 5:
+printf(&quot;Enter the customer&#39;s name\n&quot;);
+scanf(&quot;%s&quot;,cn[cnt].customername);
+printf(&quot;Enter the phone number\n&quot;);
+scanf(&quot;%ld&quot;,&amp;pn[cnt].phoneno);
+printf(&quot;Enter the customer ID\n&quot;);
+scanf(&quot;%ld&quot;,&amp;cid[cnt].customerid);
+printf(&quot;Enter the volume of water utilised(in litres)\n&quot;);
+scanf(&quot;%d&quot;,&amp;cnsmd[cnt].consumed);
+temp=cnsmd[cnt].consumed;
+if(temp&gt;0 &amp;&amp; temp&lt;=100)
+amt=temp*18;
+else if(temp&gt;100 &amp;&amp; temp&lt;=200)
+amt=(100*18)+((temp-100)*36);
+else
+amt=(100*18)+(100*36)+((temp-200)*54);
+billval[cnt].bill=amt;
+printf(&quot;\n \n&quot;);
+printf(&quot;$$$$$ %s&#39;s Water Bill $$$$$\n&quot;,cn[cnt].customername);
+printf(&quot;Name: %s\n&quot;,cn[cnt].customername);
+printf(&quot;Phone Number: %ld\n&quot;,pn[cnt].phoneno);
+printf(&quot;Customer ID: %ld\n&quot;,cid[cnt].customerid);
+printf(&quot;Volume of water consumed: %d Litres\n&quot;,cnsmd[cnt].consumed);
+printf(&quot;Final Bill Amount: Rs.%d\n&quot;,amt);
+printf(&quot;Bill due on 14th February 2022\n&quot;);
+printf(&quot;\n \n&quot;);
+cnt++;
+
+break;
+
+case 6:
+printf(&quot;Enter the customer&#39;s name\n&quot;);
+scanf(&quot;%s&quot;,cn[cnt].customername);
+printf(&quot;Enter the phone number\n&quot;);
+scanf(&quot;%ld&quot;,&amp;pn[cnt].phoneno);
+printf(&quot;Enter the customer ID\n&quot;);
+scanf(&quot;%ld&quot;,&amp;cid[cnt].customerid);
+
+printf(&quot;Enter the units of electricity consumed\n&quot;);
+scanf(&quot;%d&quot;,&amp;temp1);
+{
+if(temp1&gt;0 &amp;&amp; temp1&lt;100)
+electric=temp1*0.50;
+else if(temp1&gt;100 &amp;&amp; temp1&lt;200)
+electric=(100*0.50)+((temp1-100)*0.40);
+else if(temp1&gt;200 &amp;&amp; temp1&lt;300)
+electric=(100*0.50)+(100*0.40)+((temp1-200)*0.30);
+else if(temp1&gt;300 &amp;&amp; temp1&lt;400)
+electric=(100*0.50)+(100*0.40)+(100*0.30)+((temp1-300)*0.20);
+else
+electric=(100*0.50)+(100*0.40)+(100*0.30)+(100*0.20)+((temp1-400)*0.20);
+}
+
+printf(&quot;Enter the amount of data consumed in gigabytes\n&quot;);
+scanf(&quot;%d&quot;,&amp;temp2);
+{
+if(temp2&gt;0 &amp;&amp; temp2&lt;100)
+internet=temp2*10;
+
+else if(temp2&gt;100 &amp;&amp; temp2&lt;200)
+internet=(100*10)+((temp2-100)*8);
+else if(temp2&gt;200 &amp;&amp; temp2&lt;300)
+internet=(100*10)+(100*8)+((temp2-200)*6);
+else if(temp2&gt;300 &amp;&amp; temp2&lt;400)
+internet=(100*10)+(100*8)+(100*6)+((temp2-300)*5);
+else
+internet=(100*10)+(100*8)+(100*6)+(100*5)+((temp2-400)*4.5);
+}
+
+printf(&quot;Enter the total talktime(in minutes)\n&quot;);
+scanf(&quot;%d&quot;,&amp;temp3);
+{
+if(temp3&gt;0 &amp;&amp; temp3&lt;=500)
+talk=temp3*1;
+else if(temp3&gt;500 &amp;&amp; temp3&lt;=1000)
+talk=(500*1)+((temp3-500)*0.8);
+else
+talk=(500*1)+(500*0.8)+((temp3-1000)*0.6);
+}
+
+printf(&quot;Enter the volume of gas utilised(in cubic metres)\n&quot;);
+scanf(&quot;%d&quot;,&amp;temp4);
+{
+if(temp4&gt;0 &amp;&amp; temp4&lt;=5)
+gas=temp4*25;
+else if(temp4&gt;5 &amp;&amp; temp4&lt;=10)
+gas=(5*25)+((temp4-5)*50);
+else
+gas=(5*25)+(5*50)+((temp4-10)*75);
+}
+
+printf(&quot;Enter the volume of water utilised(in litres)\n&quot;);
+scanf(&quot;%d&quot;,&amp;temp5);
+{
+if(temp5&gt;0 &amp;&amp; temp5&lt;=100)
+water=temp5*18;
+else if(temp5&gt;100 &amp;&amp; temp5&lt;=200)
+water=(100*18)+((temp5-100)*36);
+else
+water=(100*18)+(100*36)+((temp5-200)*54);
+}
+
+amt=electric+internet+talk+gas+water;
+billval[cnt].bill=amt;
+printf(&quot;\n \n&quot;);
+printf(&quot;$$$$$ %s&#39;s Combined Bill $$$$$\n&quot;,cn[cnt].customername);
+printf(&quot;Name: %s\n&quot;,cn[cnt].customername);
+printf(&quot;Phone Number: %ld\n&quot;,pn[cnt].phoneno);
+printf(&quot;Customer ID: %ld\n&quot;,cid[cnt].customerid);
+printf(&quot;Units of Electricty Consumed: %d kW\n&quot;,temp1);
+printf(&quot;Data Consumed: %d GB\n&quot;,temp2);
+printf(&quot;Talktime: %d Minutes\n&quot;,temp3);
+printf(&quot;Volume of Gas consumed: %d Cubic Metres\n&quot;,temp4);
+printf(&quot;Volume of water consumed: %d Litres\n&quot;,temp5);
+printf(&quot;Final Bill Amount: Rs.%d\n&quot;,amt);
+printf(&quot;Bill due on 14th February 2022\n&quot;);
+printf(&quot;\n \n&quot;);
+cnt++;
+
+break;
+
+case 7:
+printf(&quot;*** Thank you! ***&quot;);
+exit(0);
+
+}
+printf(&quot;Would you like to continue?\n&quot;); //user is asked if they would like to continue
+printf(&quot;Enter y/n\n &quot;);
+scanf(&quot; %c&quot;,&amp;a);
+if(a==&#39;n&#39; || a==&#39;N&#39;) //if n is entered, program is terminated.
+printf(&quot;*** Thank you! ***&quot;);
+}while(a==&#39;Y&#39; || a==&#39;y&#39;); //if y is entered, control goes back to the while loop
+}
